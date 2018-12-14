@@ -1,0 +1,206 @@
+/*форма пошуку*/
+/*HBox, в якому всі форми для задання параметрів пошуку*/
+.searchParametersBox {
+
+}
+/*HBox, в якому два поля для пошуку*/
+.stationsSelections {
+    -fx-padding: 0 0 10 0;
+}
+/*ті простенькі лейбли над полями вибору станцій та датою*/
+.simpleLabel.label {
+    -fx-text-fill: #777a7e;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 3 0;
+    /*я хз чого саме там має бути 500. думаю не пікселів, але попробуй все що є.*/
+    /*-fx-font-weight: 500;    */
+}
+/*поле вибору зупинки*/
+.stationSelectField {
+    /*я хз чи підійде. пробуй*/
+    -fx-pref-width: 446;
+    -fx-pref-height: 49;
+    -fx-max-width: 446;
+    -fx-max-height: 49;
+}
+/*гарячі зупинки*/
+.hotList {
+    -fx-padding: 7 0 0 0;
+}
+.hot.label {
+    -fx-text-fill: #262626;
+    -fx-font-size: 14px;
+}
+.hot {
+    -fx-underline: true;
+    -fx-padding: 0 7 0 0;
+}
+.hot:hover {
+    -fx-cursor: hand;
+    -fx-underline: false;
+}
+.swapArrow {
+    -fx-pref-width: 38;
+    -fx-pref-height: 14;
+    -fx-max-width: 38;
+    -fx-max-height: 14;
+    -fx-padding: 37 10 0 10;
+}
+.dateTimePickerBox {
+
+}
+.datePicker {
+
+}
+.picker {
+
+}
+.timePicker {
+
+}
+.searchButton {
+    -fx-border-color: #a5d1ef;
+    -fx-border-width: 2;
+    -fx-background-color: linear-gradient(#add7ef 0px, #78b5da 100%);
+    -fx-pref-width: 434px;
+    -fx-pref-height: 60px;
+    -fx-max-width: 434px;
+    -fx-max-height: 60px;
+
+}
+.searchButton .label {
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1d4965;
+}
+.searchButton:hover {
+    -fx-cursor: hand;
+    -fx-background-color: linear-gradient(#b3ddf5 0px, #7ebbe0 100%);
+
+}
+
+
+/*форма пошуку*/
+
+
+.label {
+    -fx-text-fill: #ffffff;
+}
+
+.carriageList {
+    -fx-pref-width: 1000px;
+    -fx-pref-height: 43px;
+    -fx-background-color: #a1b0b9;
+    -fx-padding: 10px 10px 10px 30px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-spacing: 3px;
+}
+.carriageTab {
+    -fx-pref-width: 72px;
+    -fx-pref-height: 28px;
+    -fx-max-width: 72px;
+    -fx-max-height: 28px;
+}
+.carriageTab.label {
+    -fx-effect: dropshadow( gaussian , #000000 , 1,0,0,0 );
+}
+.carriageTab:selected {
+    -fx-border-width: 1;
+    -fx-border-color: #ffffff;
+    -fx-border-insets: -3 0 0 -4;
+    -fx-border-radius: 3;
+}
+
+.carriageScheme {
+    -fx-pref-width: 1000px;
+    -fx-pref-height: 215px;
+    -fx-background-color: #f9fbfd;
+    -fx-padding: 0px 0px 0px 30px;
+
+}
+.carriageType {
+    -fx-pref-width: 998px;
+    -fx-pref-height: 33px;
+    -fx-padding: 10px 10px 10px 0px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c6a8c;
+
+}
+
+.floor {
+    -fx-pref-width: 870px;
+    -fx-pref-height: 97px;
+    -fx-max-width: 870px;
+    -fx-max-height: 97px;
+    -fx-border-width: 6px;
+    -fx-border-insets: -5px;
+    -fx-border-color: #2c6a8c;
+    -fx-border-radius: 10;
+    -fx-padding: 10px 10px 10px 35px;
+}
+.floor#couchette {
+    -fx-pref-width: 870px;
+    -fx-pref-height: 127px;
+    -fx-max-width: 870px;
+    -fx-max-height: 127px;
+}
+/*.floor#comparatment#sv {*/
+    /*-fx-pref-width: 870px;*/
+    /*-fx-pref-height: 97px;*/
+    /*-fx-max-width: 870px;*/
+    /*-fx-max-height: 97px;*/
+/*}*/
+
+.floor .separator *.line {
+    -fx-border-style: solid;
+    -fx-border-color: #2c6a8c;
+}
+.floor .separator#short *.line {
+    -fx-border-width: 35 0 0 2;
+}
+ .floor .separator#long *.line {
+    -fx-border-width: 66 0 0 2;
+}
+
+.hb_w_places {
+    -fx-spacing: 8;
+}
+.place {
+    -fx-pref-width: 32px;
+    -fx-pref-height: 25px;
+    -fx-max-width: 32px;
+    -fx-max-height: 25px;
+    -fx-background-color: #BEBEBE;
+    -fx-background-radius: 5;
+}
+.place#sv {
+    -fx-pref-width: 32px;
+    -fx-pref-height: 55px;
+    -fx-max-width: 32px;
+    -fx-max-height: 55px;
+}
+.place:free {
+     -fx-background-color: #2c6a8c;
+ }
+.place:selected {
+    -fx-background-color: #CE0000;
+}
+.place .label {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-min-height: 25px;
+    -fx-pref-height: 25px;
+    -fx-max-height: 25px;
+    -fx-min-width: 32px;
+    -fx-pref-width: 32px;
+    -fx-max-width: 32px;
+}
+.place .separator *.line {
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 1 23;
+    -fx-border-color: #ffffff;
+}
