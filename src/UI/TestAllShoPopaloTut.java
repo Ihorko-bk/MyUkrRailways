@@ -4,9 +4,13 @@ import Entity.Station;
 import UI.View.SearchRoutesView;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class TestAllShoPopaloTut extends Application {
@@ -43,10 +47,22 @@ public class TestAllShoPopaloTut extends Application {
             add(new Station("Dnipro Holovnyy"));
         }});
         Pane pane = new Pane(searchRoutesView);
+//
+        DatePicker datePicker = new DatePicker(LocalDate.now());
+        datePicker.valueProperty().addListener(observable -> {
+            System.out.println(datePicker.getValue());
 
+        });
+        Button btn = new Button("Next day");
+        btn.setOnAction(event -> datePicker.setValue(datePicker.getValue().plusDays(1)));
+        Button btn1 = new Button("tomorrow");
+        btn1.setOnAction(event -> datePicker.setValue(LocalDate.now().plusDays(1)));
+        Button btn2 = new Button("getDate");
+        btn2.setOnAction(event -> System.out.println(datePicker.getValue()));
+//        Pane pane = new VBox(datePicker, btn, btn1, btn2);
 
         pane.setMinSize(700, 700);
-        Scene scene = new Scene(pane, 900, 300);
+        Scene scene = new Scene(pane, 1040, 400);
         scene.getStylesheets().add("css/uz.css");
         primaryStage.setScene(scene);
         primaryStage.show();

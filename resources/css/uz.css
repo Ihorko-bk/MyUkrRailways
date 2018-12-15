@@ -1,11 +1,26 @@
 /*форма пошуку*/
 /*HBox, в якому всі форми для задання параметрів пошуку*/
+.searchRoutesBox {
+    -fx-pref-width: 1040;
+    -fx-pref-height: 400;
+    -fx-max-width: 1040;
+    -fx-max-height: 400;
+    -fx-padding: 20 20 0 20;
+    /*може bg-color взагалі не давати..*/
+    /*-fx-background-color: #eaeef1;*/
+}
 .searchParametersBox {
-
+    -fx-background-color: #eaeef1;
+    -fx-effect: dropshadow(gaussian , #c3c9d0, 25, 0.0, 0, 0);
+    -fx-pref-width: 1000;
+    -fx-pref-height: 255;
+    -fx-max-width: 1000;
+    -fx-max-height: 255;
+    -fx-padding: 15 25 35 25;
 }
 /*HBox, в якому два поля для пошуку*/
 .stationsSelections {
-    -fx-padding: 0 0 10 0;
+    -fx-padding: 0 0 25 0;
 }
 /*ті простенькі лейбли над полями вибору станцій та датою*/
 .simpleLabel.label {
@@ -24,9 +39,15 @@
     -fx-max-width: 446;
     -fx-max-height: 49;
 }
+.stationSelectField.combo-box-base{ /* .text-field*/
+    -fx-text-fill: #373737;
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+}
+
 /*гарячі зупинки*/
 .hotList {
-    -fx-padding: 7 0 0 0;
+    -fx-padding: 5 0 0 5;
 }
 .hot.label {
     -fx-text-fill: #262626;
@@ -40,28 +61,54 @@
     -fx-cursor: hand;
     -fx-underline: false;
 }
-.swapArrow {
-    -fx-pref-width: 38;
-    -fx-pref-height: 14;
-    -fx-max-width: 38;
-    -fx-max-height: 14;
+.swapArrowPane {
     -fx-padding: 37 10 0 10;
+}
+.swapArrow {
+    -fx-cursor: hand;
 }
 .dateTimePickerBox {
 
 }
 .datePicker {
-
+    -fx-pref-width: 232;
+    -fx-pref-height: 93;
+    -fx-max-width: 232;
+    -fx-max-height: 93;
 }
 .picker {
-
+    -fx-pref-width: 232;
+    -fx-pref-height: 49;
+    -fx-max-width: 232;
+    -fx-max-height: 49;
+}
+.picker .text-field {
+    -fx-text-fill: #373737;
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
 }
 .timePicker {
 
 }
+.paneWithButton {
+    -fx-pref-width: 1000px;
+    -fx-pref-height: 130px;
+    -fx-max-width: 1000px;
+    -fx-max-height: 130px;
+}
+.aroundSearchButton {
+    -fx-background-radius: 42;
+    -fx-background-color: #dbe4ea;
+    -fx-pref-width: 464px;
+    -fx-pref-height: 80px;
+    -fx-max-width: 464px;
+    -fx-max-height: 80px;
+}
 .searchButton {
     -fx-border-color: #a5d1ef;
     -fx-border-width: 2;
+    -fx-border-radius: 42;
+    -fx-background-radius: 42;
     -fx-background-color: linear-gradient(#add7ef 0px, #78b5da 100%);
     -fx-pref-width: 434px;
     -fx-pref-height: 60px;
@@ -77,6 +124,15 @@
 .searchButton:hover {
     -fx-cursor: hand;
     -fx-background-color: linear-gradient(#b3ddf5 0px, #7ebbe0 100%);
+}
+.searchButton:armed{
+    -fx-cursor: hand;
+
+    /*-fx-background-color: #7ebbe0;*/
+    /*-fx-border-color: #7ebbe0;  !* може ось це забрати *!*/
+
+    -fx-background-color: linear-gradient(#7ebbe0 0px, #b3ddf5 100%);
+    -fx-border-color: linear-gradient(#7ebbe0 0px, #b3ddf5 100%);
 
 }
 

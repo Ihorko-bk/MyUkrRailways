@@ -1,5 +1,6 @@
 package UI.Control;
 
+import javafx.css.PseudoClass;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -10,6 +11,7 @@ import java.time.format.DateTimeFormatter;
 
 public class SearchButton extends BorderPane {
     Label btnText;
+    BorderPane bpButton;
 //    public SearchButton(LocalDate date, EventHandler<? super MouseEvent> onClickEvent) {
 //        this.btnText = new Label();
 //        setBtnText(date);
@@ -19,9 +21,13 @@ public class SearchButton extends BorderPane {
 //    }
     public SearchButton(String text, EventHandler<? super MouseEvent> onClickEvent) {
         this.btnText = new Label(text);
-        setCenter(btnText);
-        getStyleClass().add("searchButton");
-        setOnMouseClicked(onClickEvent);
+        bpButton = new BorderPane(btnText);
+        bpButton.getStyleClass().add("searchButton");
+        bpButton.setOnMouseClicked(onClickEvent);
+        bpButton.setOnMousePressed(event -> bpButton.pseudoClassStateChanged(PseudoClass.getPseudoClass("armed"), true));
+        bpButton.setOnMouseReleased(event -> bpButton.pseudoClassStateChanged(PseudoClass.getPseudoClass("armed"), false));
+        setCenter(bpButton);
+        getStyleClass().add("aroundSearchButton");
     }
     public void setBtnText(String text) {
         btnText.setText(text);

@@ -31,6 +31,9 @@ public class StationField extends VBox {
     public Station getSelectedStation() {
         return cbStations.getValue();
     }
+    public void setSelectedStation(Station station) {
+        cbStations.getSelectionModel().select(station);
+    }
 
     private void createLabel(String labelText) {
         label = new Label(labelText);
@@ -42,7 +45,7 @@ public class StationField extends VBox {
         cbStations = new ComboBox<>();
         cbStations.getStyleClass().add("stationSelectField");
         cbStations.getItems().addAll(stations);
-        new AutoCompleteComboBoxListener<>(cbStations);
+//        new AutoCompleteComboBoxListener<>(cbStations);       // ця лєва муть кидає Txception'и. шуккти іншу, або пиши сам
         getChildren().add(cbStations);
     }
 

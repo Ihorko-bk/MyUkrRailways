@@ -37,7 +37,8 @@ public class DatePicker extends VBox {
 //                (observable, oldValue, newValue) -> searchButton.setBtnText(newValue)
 //        );
 //        pickerDate.valueProperty().addListener(
-//                observable -> searchButton.setBtnText(pickerDate.getValue())
+//                observable -> System.out.println(pickerDate.getValue())
+////                        searchButton.setBtnText(pickerDate.getValue())
 //        );
         pickerDate.getStyleClass().add("picker");
         getChildren().add(pickerDate);
