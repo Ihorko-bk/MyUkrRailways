@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/ticket.css">
+</head>
+<body>
+
+<table border="1" id="firstTable">
+	<tr>
+		<td id="terminal" rowspan="2">ТЕРМ. №1</td>
+		<td id="docType">ПОСАДОЧНИЙ ДОКУМЕНТ</td>
+		<td id="hash">$hash</td>
+		<td id="bankInfos" rowspan="2" colspan="2">
+            ПН:400758126555</br>
+			ФН:3000309787</br>
+			ЗН:ЗТ00000005</br>
+			ФК:10395626
+		</td>
+	</tr>
+	<tr>
+		<td id="pat">ПАТ "УКРЗАЛІЗНИЦЯ"</br>м.Київ, вул.Тверська, буд.5</td>
+		<td id="dich"></td>
+	</tr>
+	<tr>
+   		<td id="mps">МПС</td>
+   		<td id="pidstava" colspan="2">ЦЕЙ ДОКУМЕНТ Є ПІДСТАВОЮ ДЛЯ ПРОЇЗДУ</td>
+   		<td id="purchaseDateTime">$purchaseDateTime</td>
+	</tr>
+</table>
+
+<table border="1" id="secondTable">
+	<tr>
+		<td id="lblflname" colspan="2">Прізвище, ім'я</td>
+		<td id="flname">$flname</td>
+		<td id="lbltrain">Поїзд</td>
+		<td id="train">$route</td>
+	</tr>
+	<tr>
+		<td id="lblStart">Відправлення</td>
+		<td id="startStationId">$startStaionId</td>
+		<td id="startStationName">$startStationName</td>
+		<td id="lblCarriage">Вагон</td>
+		<td id="carriage">$carriage</td>
+	</tr>
+	<tr>
+		<td id="lblEnd">Призначення</td>
+		<td id="endStationId">$endStationId</td>
+		<td id="endTationName">$endTationName</td>
+		<td id="lblPlace">Місце</td>
+		<td id="place">$place Повний</td>
+	</tr>
+	<tr>
+		<td id="lblDateTimeStart" colspan="2">Дата/час відправлення</td>
+		<td id="dateTimeStart">$dateTimeStart</td>
+		<td id="lblService" rowspan="2">Сервіс</td>
+		<td id="service" rowspan="2">$service</td>
+	</tr>
+	<tr>
+		<td id="lblDateTimeEnd" colspan="2">Дата/час прибуття</td>
+		<td id="dateTimeEnd">$dateTimeEnd</td>
+	</tr>
+	<tr>
+		<td id="info00" colspan="5">
+			ВАРТ=<b>$costГРН</b>(КВ.$kv+ПЛ.$pl+СП.$sp+ПДВ.$pdv+СТР.$str+КЗБ.$kzb)</br>
+			<!--В Т.Ч. БІЛ-30,00 (З ПДВ)--></br>
+			#СТР.ВІД Н/В 6000НЕОП.МІН. СК"АРСЕНАЛ СТРАХУВАННЯ", КИЇВ БОРЩАГІВСЬКА154, T0800604453</br>
+			<b>ЧАС ВІДПРАВЛЕННЯ КИЇВСЬКИЙ</b>
+		</td>
+	</tr>
+</table>
+
+<table border="1" id="thirdTable">
+	<tr>
+		<td id="qrCodeField">
+			<img src="../images/generated_qr.png" height="213" width="213"/></td>
+		<td id="info01">
+			Цей Посадочний документ є підставою для проїзду без звернення у касу.</br>
+			Посадочний документ являється розрахунковим документом.</br>
+			Посадка здійснюється за пред’явленням документа, який посвідчує особу.</br>
+			Повернення даного Посадочного документа можливе до відправлення поїзда.</br>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

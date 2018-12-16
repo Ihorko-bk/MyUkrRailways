@@ -1,0 +1,120 @@
+table {
+    border-collapse: collapse;
+    border-color: black;
+    width: 847px;
+    font-family: "Courier New";
+    font-size: 11.5pt;
+}
+td {
+    padding: 0px 0px 0px 2px;
+}
+
+#docType, #hash, #bankInfos, #pidstava, #info01{
+    font-family: "Arial";
+    font-weight: bold;
+}
+
+#firstTable {
+
+}
+#terminal {
+    width: 89px;
+    text-align: center;
+}
+#docType {
+    width: 237px;
+    height: 37px;
+    font-size: 12pt;
+    text-align: left;
+    vertical-align: text-top;
+}
+#hash {
+    width: 360px;
+    font-size: 19pt;
+    text-align: center;
+}
+#bankInfos {
+    width: 154px;
+    font-weight: bold;
+}
+#pat {
+    height: 26px;
+    font-family: "Times New Roman";
+    font-size: 10pt;
+}
+#dich {
+    vertical-align: text-top;
+    font-size: 12.5pt;
+    font-weight: bold;
+}
+#mps {
+    height: 22px;
+}
+#pidstava {
+    font-size: 12pt;
+    text-align: center;
+}
+#purchaseDateTime {
+    text-align: right;
+}
+
+
+#secondTable {
+    border-top: 0px;
+}
+#secondTable td {
+    height: 22px;
+}
+#lblflname {
+    width: 205px;
+}
+#flname {
+    width: 351px;
+}
+#lbltrain {
+    width: 134px;
+}
+#train, #carriage, #place{
+    text-align: right;
+    width: 149px;
+    font-size: 12.5pt;
+    font-weight: bold;
+}
+
+#purchaseDateTime, #train, #carriage, #place, #service {
+    padding: 0px 2px 0px 0px;
+}
+
+#lblStart {
+    width: 132px;
+}
+#startStationId {
+    width: 72px;
+}
+#startStationName, #endTationName, #dateTimeStart, #dateTimeEnd {
+    font-size: 12.5pt;
+    font-weight: bold;
+}
+#service {
+    font-size: 10pt;
+    text-align: right;
+}
+td#info00 {
+    height: 76px;
+}
+
+
+#thirdTable {
+    border-top: 0px;
+}
+#qrCodeField {
+    width: 203px;
+    height: 236px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+#info01 {
+    width: 637px;
+    font-weight: bold;
+    padding-left: 15px;
+}
