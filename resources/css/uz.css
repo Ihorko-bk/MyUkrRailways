@@ -158,9 +158,20 @@
     -fx-pref-height: 28px;
     -fx-max-width: 72px;
     -fx-max-height: 28px;
+    -fx-cursor: hand;
 }
 .carriageTab.label {
     -fx-effect: dropshadow( gaussian , #000000 , 1,0,0,0 );
+}
+.carriageTab #carriageNumber {
+    -fx-pref-width: 45;
+    -fx-pref-height: 18;
+    -fx-alignment: center;
+}
+.carriageTab #carriageFreePlacesAmount {
+    -fx-pref-width: 22;
+    -fx-pref-height: 10;
+    -fx-alignment: center;
 }
 .carriageTab:selected {
     -fx-border-width: 1;
@@ -186,7 +197,7 @@
 
 }
 
-.floor {
+.carriageFloor {
     -fx-pref-width: 870px;
     -fx-pref-height: 97px;
     -fx-max-width: 870px;
@@ -197,27 +208,27 @@
     -fx-border-radius: 10;
     -fx-padding: 10px 10px 10px 35px;
 }
-.floor#couchette {
+.carriageFloor#couchette {
     -fx-pref-width: 870px;
     -fx-pref-height: 127px;
     -fx-max-width: 870px;
     -fx-max-height: 127px;
 }
-/*.floor#comparatment#sv {*/
+/*.carriageFloor#comparatment#sv {*/
     /*-fx-pref-width: 870px;*/
     /*-fx-pref-height: 97px;*/
     /*-fx-max-width: 870px;*/
     /*-fx-max-height: 97px;*/
 /*}*/
 
-.floor .separator *.line {
+.carriageFloor .separator *.line {
     -fx-border-style: solid;
     -fx-border-color: #2c6a8c;
 }
-.floor .separator#short *.line {
+.carriageFloor .separator#short *.line {
     -fx-border-width: 35 0 0 2;
 }
- .floor .separator#long *.line {
+ .carriageFloor .separator#long *.line {
     -fx-border-width: 66 0 0 2;
 }
 
@@ -259,4 +270,37 @@
     -fx-border-style: solid;
     -fx-border-width: 0 0 1 23;
     -fx-border-color: #ffffff;
+}
+
+
+.placeOrderPane {
+    -fx-pref-width: 1000px;
+    -fx-pref-height: 149px;
+    -fx-background-color: #f9fbfd;
+    -fx-border-color: #d7dce1;
+    -fx-border-width: 0 1px 1px 1px;
+    -fx-padding: 16px 20px 35px 0;
+    -fx-alignment: right;
+}
+.placeOrderPane #routeNumberBox {
+    -fx-pref-width: 112px;
+    -fx-pref-height: 62px;
+    -fx-background-color: #f9fbfd;
+    -fx-border-color: #d7dce1;
+}
+.placeOrderPane #routeNumberBox .label {
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+}
+.placeOrderBox {
+
+}
+#orderTicketButton {
+    -fx-pref-width: 270px;
+    -fx-pref-height: 60px;
+    -fx-background-color: linear-gradient(#79b6db 0%, #b3dbf2 100%);
+}
+#orderTicketButton:hover {
+    -fx-opacity: .8;
+    -fx-cursor: hand;
 }

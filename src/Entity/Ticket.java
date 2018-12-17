@@ -4,9 +4,9 @@ import java.time.LocalDateTime;
 
 public class Ticket {
     private int id;
-    // пропоную перейменувати з date на purchaseDate, так як нам потім треба буде отримати дати
+    // пропоную перейменувати з date на purchaseDateTime, так як нам потім треба буде отримати дати
     // відправки та прибуття і можна буде плутатись з тим..
-    private LocalDateTime purchaseDate;
+    private LocalDateTime purchaseDateTime;
     private String firstName;
     private String lastName;
     private Route route;
@@ -20,11 +20,11 @@ public class Ticket {
 
 
 
-    public LocalDateTime getPurchaseDate() {
-        return purchaseDate;
+    public LocalDateTime getPurchaseDateTime() {
+        return purchaseDateTime;
     }
-    public void setPurchaseDate(LocalDateTime purchaseDate) {
-        this.purchaseDate = purchaseDate;
+    public void setPurchaseDateTime(LocalDateTime purchaseDateTime) {
+        this.purchaseDateTime = purchaseDateTime;
     }
 
     public String getFirstName() {

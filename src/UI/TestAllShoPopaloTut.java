@@ -1,13 +1,12 @@
 package UI;
 
 import Entity.Station;
-import UI.View.SearchRoutesView;
+import UI.View.SearchRoutesPane;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
@@ -39,20 +38,18 @@ public class TestAllShoPopaloTut extends Application {
 
 //        DatePicker datePicker = new DatePicker("Departure date", null);
 
-        SearchRoutesView searchRoutesView = new SearchRoutesView(new ArrayList<Station>(){{
+
+        SearchRoutesPane searchRoutesPane = new SearchRoutesPane(new ArrayList<Station>(){{
             add(new Station("Kyiv"));
             add(new Station("Lviv"));
             add(new Station("Kharkiv"));
             add(new Station("Odesa"));
             add(new Station("Dnipro Holovnyy"));
         }});
-        Pane pane = new Pane(searchRoutesView);
+        Pane pane = new Pane(searchRoutesPane);
 //
         DatePicker datePicker = new DatePicker(LocalDate.now());
-        datePicker.valueProperty().addListener(observable -> {
-            System.out.println(datePicker.getValue());
-
-        });
+        datePicker.valueProperty().addListener(observable -> System.out.println(datePicker.getValue()));
         Button btn = new Button("Next day");
         btn.setOnAction(event -> datePicker.setValue(datePicker.getValue().plusDays(1)));
         Button btn1 = new Button("tomorrow");

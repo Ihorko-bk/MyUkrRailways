@@ -10,16 +10,24 @@ public class Carriage {
     private int number;
     private CarriageType carriageType;
     // додав колекцію місць
-    private ArrayList<Place> places = new ArrayList<>();
+    private ArrayList<Place> places;
 
     public Carriage() {
     }
+
     public Carriage(CarriageType carriageType) {
         this.carriageType = carriageType;
     }
 
     // напевне треба зробити конструктор для створення вагону з маршруту <маршрут>, номером <номер>,
-    // та типу <тип>. або хз. ну хоча б тимчасово.
+    // типу <тип> та масивом місць. або хз. ну хоча б тимчасово.
+    public Carriage(Route route, int number, CarriageType carriageType, ArrayList<Place> places) {
+        this.route = route;
+        this.number = number;
+        this.carriageType = carriageType;
+        this.places = places;
+    }
+    // не хотів робити через this(route, number, carriageType, null) бо то тупо передавати null
     public Carriage(Route route, int number, CarriageType carriageType) {
         this.route = route;
         this.number = number;
@@ -33,7 +41,7 @@ public class Carriage {
         this.number = number;
     }
 
-    // Getter, Setter, "Adder" для places
+    // Getter, Setter, "Adder"(я хз нашо. може знадобиться. а як нє то викинути до сраки) для places
     public ArrayList<Place> getPlaces() {
         return places;
     }
@@ -41,6 +49,7 @@ public class Carriage {
         this.places = places;
     }
     public void addPlace(Place place) {
+        if (place==null) places = new ArrayList<>();
         this.places.add(place);
     }
 

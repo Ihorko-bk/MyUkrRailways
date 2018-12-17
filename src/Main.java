@@ -1,4 +1,7 @@
+import Entity.Carriage;
 import Entity.CarriageType;
+import Entity.Place;
+import UI.Control.CarriageFloor;
 import UI.Control.CarriageTab;
 import UI.Control.PlaceButton;
 import javafx.application.Application;
@@ -6,7 +9,9 @@ import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.Separator;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -25,19 +30,44 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+        ArrayList<Place> placesForCarriage1 = new ArrayList<>();
+        ArrayList<Place> placesForCarriage2 = new ArrayList<>();
+        ArrayList<Place> placesForCarriage3 = new ArrayList<>();
+        Random rand = new Random(8462846L);
+        Carriage carriage1 = new Carriage(null, 1, CarriageType.COUCHETTE);
+        Carriage carriage2 = new Carriage(null, 2, CarriageType.COUCHETTE);
+        Carriage carriage3 = new Carriage(null, 3, CarriageType.COUCHETTE);
+        for (int i = 1; i <=54; i++) {
+            placesForCarriage1.add(new Place(i, rand.nextBoolean(), carriage1));
+            placesForCarriage2.add(new Place(i, rand.nextBoolean(), carriage2));
+            placesForCarriage3.add(new Place(i, rand.nextBoolean(), carriage3));
+        }
+        carriage1.setPlaces(placesForCarriage1);
+        carriage2.setPlaces(placesForCarriage2);
+        carriage3.setPlaces(placesForCarriage3);
+
+
+
+
+
         HBox carriageList = new HBox();
         carriageList.getStyleClass().add("carriageList");
 
-//        Label lblcarriages = new Label("Вагони:");
         Label lblcarriages = new Label("Carriages:");
         lblcarriages.setPadding(new Insets(0, 10, 0, 0));
 
 
         carriageList.getChildren().add(lblcarriages);
 
+        ToggleGroup toggleGroup = new ToggleGroup();
         CarriageTab carriageTab1 = new CarriageTab(1, 69);
+        carriageTab1.setToggleGroup(toggleGroup);
+        carriageTab1.setSelected(true);
         CarriageTab carriageTab2 = new CarriageTab(2, 11);
+        carriageTab2.setToggleGroup(toggleGroup);
         CarriageTab carriageTab3 = new CarriageTab(3, 5);
+        carriageTab3.setToggleGroup(toggleGroup);
+
         carriageList.getChildren().addAll(carriageTab1, carriageTab2, carriageTab3);
 
 
@@ -52,12 +82,13 @@ public class Main extends Application {
                         + carriageType.name().substring(0, 1) + carriageType.name().substring(1).toLowerCase());
         lblCarriageType.getStyleClass().add("carriageType");
 
-        Pane floor = new Pane();
-        floor.getStyleClass().add("floor");
-        floor.setId(carriageType.name().toLowerCase());
+        Pane carriageFloor = new Pane();
+        carriageFloor.getStyleClass().add("carriageFloor");
+        carriageFloor.setId(carriageType.name().toLowerCase());
 
         // ------------------------------------------------------------------------------перегородки
         // -------------------------------------------------------------------------ліві
+
         ArrayList<Separator> leftSeparators = new ArrayList<>();
         Separator firstLeftSeparator = new Separator(Orientation.VERTICAL);
         int leftSeparatorsX = 33;
@@ -79,7 +110,7 @@ public class Main extends Application {
         lastLeftSeparator.setLayoutY(0);
         leftSeparators.add(lastLeftSeparator);
 
-        floor.getChildren().addAll(leftSeparators);
+        carriageFloor.getChildren().addAll(leftSeparators);
         // -------------------------------------------------------------------------ліві
         // -------------------------------------------------------------------------праві
         ArrayList<Separator> rightSeparators = new ArrayList<>();
@@ -106,22 +137,22 @@ public class Main extends Application {
         lastRightSeparator.setLayoutY(rightSeparatorsY);
         rightSeparators.add(lastRightSeparator);
 
-        floor.getChildren().addAll(rightSeparators);
+        carriageFloor.getChildren().addAll(rightSeparators);
 
         // -------------------------------------------------------------------------праві
         // ------------------------------------------------------------------------------перегородки
 
         // ------------------------------------------------------------------------------сральники
         Image imgToilet = new Image("images/toilet.png");
-        ImageView firstToilet = new ImageView(imgToilet);
-        firstToilet.setLayoutX(38);
-        firstToilet.setLayoutY(5);
+        ImageView toilet1 = new ImageView(imgToilet);
+        toilet1.setLayoutX(38);
+        toilet1.setLayoutY(5);
 
-        ImageView secondToilet = new ImageView(imgToilet);
-        secondToilet.setLayoutX(798);
-        secondToilet.setLayoutY(5);
+        ImageView toilet2 = new ImageView(imgToilet);
+        toilet2.setLayoutX(798);
+        toilet2.setLayoutY(5);
 
-        floor.getChildren().addAll(firstToilet, secondToilet);
+        carriageFloor.getChildren().addAll(toilet1, toilet2);
         // ------------------------------------------------------------------------------сральники
 
         // ------------------------------------------------------------------------------місця
@@ -129,7 +160,7 @@ public class Main extends Application {
         ArrayList<PlaceButton> placeButtons = new ArrayList<>();
         Random random = new Random(8462846L);
         for (int i = 1; i <= carriageType.getCapasity(); i++) {
-            placeButtons.add(new PlaceButton(random.nextBoolean(), i));
+            placeButtons.add(new PlaceButton(i, random.nextBoolean()));
         }
         // ---------------------------------------------------------------------------ліві верхні
         HBox hbLeftUpPlaces = new HBox();
@@ -157,10 +188,19 @@ public class Main extends Application {
         for (int i = 53; i >=36; i--) {
             hbRightPlaces.getChildren().add(placeButtons.get(i));
         }
-        floor.getChildren().addAll(hbLeftUpPlaces, hbLeftDownPlaces, hbRightPlaces);
+        carriageFloor.getChildren().addAll(hbLeftUpPlaces, hbLeftDownPlaces, hbRightPlaces);
         // ------------------------------------------------------------------------------місця
 
-        carriageScheme.getChildren().addAll(lblCarriageType, floor);
+
+
+
+
+
+
+//        carriageScheme.getChildren().addAll(lblCarriageType, carriageFloor);
+
+
+        carriageScheme.getChildren().addAll(lblCarriageType, new CarriageFloor(carriage1));
 
 
 

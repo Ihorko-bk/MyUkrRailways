@@ -8,12 +8,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
 
-public class SearchRoutesView extends BorderPane {
+public class SearchRoutesPane extends BorderPane {
     private VBox vbSearchRoutesBox;
         private VBox vbSearchParameters;
             private HBox hbStationsSelection;
@@ -27,7 +26,7 @@ public class SearchRoutesView extends BorderPane {
             private SearchButton searchButton;
 
 
-    public SearchRoutesView(ArrayList<Station> stations) {
+    public SearchRoutesPane(ArrayList<Station> stations) {
         super();
         createSearchParametersBox(stations);
         createSearchButton();
@@ -81,19 +80,17 @@ public class SearchRoutesView extends BorderPane {
     }
 
     private void createSearchButton() {
-//        searchButton = new SearchButton(
-//                LocalDate.now(),
-//                event -> {
-//                    // пиши тут шо робити кнопці!!
-//                }
-//        );
+
         searchButton = new SearchButton(
                 "Search for trains",
                 event -> {
                     // пиши тут шо робити кнопці!!
+
+                    // тіпа тест ↓ ↓ ↓
                     System.out.println("From " + sfFrom.getSelectedStation().getName() +
                             " to " + sfTo.getSelectedStation().getName() +
                             "\n when: " + datePicker.getDate());
+                    // тіпа тест ↑ ↑ ↑
                 }
         );
         bpWithButton = new BorderPane(searchButton);
