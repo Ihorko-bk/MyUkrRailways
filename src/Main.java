@@ -4,6 +4,7 @@ import Entity.Place;
 import UI.Control.CarriageFloor;
 import UI.Control.CarriageTab;
 import UI.Control.PlaceButton;
+import UI.View.CarriagesPane;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
@@ -45,6 +46,13 @@ public class Main extends Application {
         carriage1.setPlaces(placesForCarriage1);
         carriage2.setPlaces(placesForCarriage2);
         carriage3.setPlaces(placesForCarriage3);
+
+        Carriage carriageSV = new Carriage(null, 4, CarriageType.SV);
+        ArrayList<Place> placesForCarriageSV = new ArrayList<>();
+        for (int i = 0; i < CarriageType.SV.getCapasity(); i++) {
+            placesForCarriageSV.add(new Place(i, rand.nextBoolean(), carriageSV));
+        }
+        carriageSV.setPlaces(placesForCarriageSV);
 
 
 
@@ -200,13 +208,20 @@ public class Main extends Application {
 //        carriageScheme.getChildren().addAll(lblCarriageType, carriageFloor);
 
 
-        carriageScheme.getChildren().addAll(lblCarriageType, new CarriageFloor(carriage1));
+        carriageScheme.getChildren().addAll(lblCarriageType, new CarriageFloor(carriageSV));
 
 
 
         VBox vBox = new VBox();
         vBox.getChildren().addAll(carriageList, carriageScheme);
-        Scene scene = new Scene(vBox);
+//        Scene scene = new Scene(vBox);
+
+        ArrayList<Carriage> crgs = new ArrayList<>();
+        crgs.add(carriage1);
+        crgs.add(carriage2);
+        crgs.add(carriage3);
+        Scene scene = new Scene(new CarriagesPane(crgs, null));
+
         scene.getStylesheets().add("css/uz.css");
         primaryStage.setScene(scene);
         primaryStage.show();

@@ -249,6 +249,11 @@
     -fx-max-width: 32px;
     -fx-max-height: 55px;
 }
+.place#sv .label{
+    -fx-min-height: 55px;
+    -fx-pref-height: 55px;
+    -fx-max-height: 55px;
+}
 .place:free {
      -fx-background-color: #2c6a8c;
  }
@@ -273,7 +278,8 @@
 }
 
 
-.placeOrderPane {
+
+.placeOrderList {
     -fx-pref-width: 1000px;
     -fx-pref-height: 149px;
     -fx-background-color: #f9fbfd;
@@ -282,17 +288,28 @@
     -fx-padding: 16px 20px 35px 0;
     -fx-alignment: right;
 }
-.placeOrderPane #routeNumberBox {
+.placeOrderList #routeNumberBox {
     -fx-pref-width: 112px;
     -fx-pref-height: 62px;
     -fx-background-color: #f9fbfd;
     -fx-border-color: #d7dce1;
 }
-.placeOrderPane #routeNumberBox .label {
+.placeOrderList #routeNumberBox .label {
     -fx-alignment: center;
     -fx-font-size: 20px;
 }
+.placeOrderPane {
+
+}
 .placeOrderBox {
+    -fx-pref-width: 113px;
+    -fx-pref-height: 61px;
+}
+.placeOrderCloseButton {
+    -fx-cursor: hand;
+}
+
+#totalCostLabel {
 
 }
 #orderTicketButton {

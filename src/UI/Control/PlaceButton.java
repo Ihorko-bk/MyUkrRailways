@@ -24,6 +24,9 @@ public class PlaceButton extends Pane {
     protected Separator separator;
 
     private boolean selected;
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
 
     // тимчасовий
     public PlaceButton(int number, boolean free) {
@@ -110,7 +113,7 @@ public class PlaceButton extends Pane {
     }
 
     private void createTooltip(boolean free) {
-        Tooltip tooltip = new Tooltip("PlaceButton: " + number + (free ? " free" : " busy"));
+        Tooltip tooltip = new Tooltip("Place: " + number.getText() + (free ? " free" : " busy"));
         Tooltip.install(this, tooltip);
     }
 

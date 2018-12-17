@@ -2,6 +2,7 @@ package UI.View;
 
 import Entity.Carriage;
 import Entity.CarriageType;
+import UI.Control.CarriageFloor;
 import UI.Control.CarriageTab;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
@@ -21,8 +22,7 @@ public class CarriagesPane extends VBox {
         private ArrayList<CarriageTab> carriageTabs;
     private VBox carriageScheme;
         private Label lblCarriageType;
-//        private CarriageFloor carriageFloor;
-        private Pane carriageFloor;
+        private CarriageFloor carriageFloor;
 
     public CarriagesPane(ArrayList<Carriage> carriages, PlaceOrdersPane placeOrdersPane) {
         super();
@@ -32,20 +32,21 @@ public class CarriagesPane extends VBox {
         createToggleGroup();
         createCarriageList(carriages, placeOrdersPane);
 
-        carriageFloor = carriageTabs.get(0).getCarriageFloor();
+        getChildren().addAll(carriageList, carriageScheme, carriageFloor);
+
+        carriageTabs.get(0).fire();
     }
 
     private void createCarriageScheme(CarriageType carriageType) {
         carriageScheme = new VBox();
         createLabelCarriagesType(carriageType);
         carriageScheme.getStyleClass().add("carriageScheme");
-        carriageFloor = new Pane();
-        getChildren().addAll(carriageScheme, carriageFloor);
+        carriageFloor = new CarriageFloor();
     }
 
     private void createLabelCarriagesType(CarriageType carriageType) {
         lblCarriageType =
-                new Label("Type of carriage: "
+                new Label("Wagon type: "
                         + carriageType.name().substring(0, 1) + carriageType.name().substring(1).toLowerCase());
         lblCarriageType.getStyleClass().add("carriageType");
         carriageScheme.getChildren().add(lblCarriageType);
@@ -63,7 +64,7 @@ public class CarriagesPane extends VBox {
     }
 
     private void createLabelCarriages() {
-        lblcarriages = new Label("Carriages:");
+        lblcarriages = new Label("Coaches:");
         lblcarriages.setPadding(new Insets(0, 10, 0, 0));
         carriageList.getChildren().add(lblcarriages);
     }
@@ -71,8 +72,14 @@ public class CarriagesPane extends VBox {
     private void createCarriageTabs(ArrayList<Carriage> carriages, PlaceOrdersPane placeOrdersPane) {
         carriageTabs = new ArrayList<>();
         for (int i = 0; i < carriages.size(); i++) {
-            carriageTabs.add(new CarriageTab(carriages.get(i), carriageFloor, placeOrdersPane));
+            carriageTabs.add(new CarriageTab(carriages.get(i), placeOrdersPane, toggleGroup));
         }
         carriageList.getChildren().addAll(carriageTabs);
+    }
+
+    public void changeCarriageFloor(CarriageFloor newCarriageFloor) {
+        carriageScheme.getChildren().remove(carriageFloor);
+        carriageFloor = newCarriageFloor;
+        carriageScheme.getChildren().add(carriageFloor);
     }
 }

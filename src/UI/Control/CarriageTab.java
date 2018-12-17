@@ -1,6 +1,7 @@
 package UI.Control;
 
 import Entity.Carriage;
+import UI.View.CarriagesPane;
 import UI.View.PlaceOrdersPane;
 import com.sun.javafx.scene.traversal.ParentTraversalEngine;
 import javafx.beans.property.BooleanProperty;
@@ -134,10 +135,14 @@ public class CarriageTab extends Pane implements Toggle {     // приведи 
     private ImageView imgCarriage;
     Label lblCarriageNumber, lblFreePlacesAmount;
 
-    public CarriageTab(Carriage carriage, Pane paneForFloor, PlaceOrdersPane placeOrdersPane) {
+    public CarriageTab(Carriage carriage, PlaceOrdersPane placeOrdersPane, ToggleGroup toggleGroup) {
+        this(carriage, placeOrdersPane);
+        setToggleGroup(toggleGroup);
+    }
+    public CarriageTab(Carriage carriage, PlaceOrdersPane placeOrdersPane) {
         super();
-        this.carriageNumber = carriageNumber;
-        this.freePlacesAmount = freePlacesAmount;
+        this.carriageNumber = carriage.getNumber();
+        this.freePlacesAmount = carriage.getAmountFreePlaces();
 
         createCarriageFloor(carriage, placeOrdersPane);
 
@@ -146,12 +151,7 @@ public class CarriageTab extends Pane implements Toggle {     // приведи 
         createLabels();
 
         getStyleClass().add("carriageTab");
-        setOnMouseClicked(event -> {
-            if (getToggleGroup() == null || !isSelected()) {
-                setSelected(!isSelected());
-                action();
-            }
-        });
+        setOnMouseClicked(event -> action());
     }
 
     private void createCarriageFloor(Carriage carriage, PlaceOrdersPane placeOrdersPane) {
@@ -183,6 +183,7 @@ public class CarriageTab extends Pane implements Toggle {     // приведи 
         getChildren().addAll(lblCarriageNumber, lblFreePlacesAmount);
     }
 
+    // тимчасовий
     public CarriageTab(int carriageNumber, int freePlacesAmount) {
         super();
         this.carriageNumber = carriageNumber;
@@ -194,38 +195,25 @@ public class CarriageTab extends Pane implements Toggle {     // приведи 
         getStyleClass().add("carriageTab");
 
         imgCarriage = new ImageView(new Image("images/carriage.png"));
-        //цю хрєнь що нижче перепиши відступами в css
         getChildren().add(imgCarriage);
-
-//        lblCarriageNumber = new Label(carriageNumber+"");
-//        lblCarriageNumber.setPrefSize(45, 18);
-//        lblCarriageNumber.setMaxSize(45, 18);
-//        lblCarriageNumber.setAlignment(Pos.CENTER);
-//        getChildren().add(lblCarriageNumber);
-//
-//        lblFreePlacesAmount = new Label(freePlacesAmount+"");
-//        lblFreePlacesAmount.setLayoutX(45);
-//        lblFreePlacesAmount.setLayoutY(0);
-//        lblFreePlacesAmount.setPrefSize(22, 10);
-//        lblFreePlacesAmount.setMaxSize(22, 10);
-//        lblFreePlacesAmount.setAlignment(Pos.TOP_CENTER);
-//        lblFreePlacesAmount.setStyle("-fx-background-color: #a1b0b9");
-//        getChildren().add(lblFreePlacesAmount);
         createLabels();
 
-//        setCursor(Cursor.HAND);
-        setOnMouseClicked(event -> {
-            if (getToggleGroup() == null || !isSelected()) {
-                setSelected(!isSelected());
-                action();
-            }
-        });
+        setOnMouseClicked(event -> action());
     }
 
     private void action() {
+        if (getToggleGroup() == null || !isSelected()) {
+            setSelected(!isSelected());
+            // код писати туть нижче:
 
-        System.out.println("doing");
 
+            ((CarriagesPane)getParent().getParent()).changeCarriageFloor(carriageFloor);
 
+            System.out.println("doing");
+
+        }
+    }
+    public void fire() {
+        action();
     }
 }

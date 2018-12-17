@@ -26,6 +26,10 @@ public class CarriageFloor extends Pane {
     HBox hbLeftUpPlaces, hbLeftDownPlaces, hbRightPlaces;
 
 
+    public CarriageFloor() {
+
+    }
+
     public CarriageFloor(Carriage carriage, PlaceOrdersPane placeOrdersPane) {
         this.carriage = carriage;
 
@@ -172,7 +176,8 @@ public class CarriageFloor extends Pane {
     private void createSVPlaceButtons(ArrayList<Place> places) {
         hbLeftUpPlaces = createHBoxWithPlaces(78, 5);
         for (int i = 0; i < places.size(); i++) {
-            hbLeftUpPlaces.getChildren().add(new PlaceButton(places.get(i)));
+//            hbLeftUpPlaces.getChildren().add(new SVPlaceButton(places.get(i)));
+            hbLeftUpPlaces.getChildren().add(new SVPlaceButton(places.get(i).getNumber(), places.get(i).isFree()));
         }
         getChildren().add(hbLeftUpPlaces);
     }
