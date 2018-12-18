@@ -5,6 +5,7 @@ import UI.Control.CarriageFloor;
 import UI.Control.CarriageTab;
 import UI.Control.PlaceButton;
 import UI.View.CarriagesPane;
+import UI.View.PlaceOrdersPane;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
@@ -223,50 +224,55 @@ public class Main extends Application {
         crgs1.add(carriage1);
         crgs1.add(carriage2);
         crgs1.add(carriage3);
-        CarriagesPane cp1 = new CarriagesPane(crgs1, null);
 
-        Carriage carriage21 = new Carriage(null, 4, CarriageType.COMPARATMENT);
-        Carriage carriage22 = new Carriage(null, 5, CarriageType.COMPARATMENT);
-        Carriage carriage23 = new Carriage(null, 6, CarriageType.COMPARATMENT);
-        ArrayList<Place> placesForCarriage21 = new ArrayList<>();
-        ArrayList<Place> placesForCarriage22 = new ArrayList<>();
-        ArrayList<Place> placesForCarriage23 = new ArrayList<>();
-        for (int i = 1; i <=CarriageType.COMPARATMENT.getCapasity(); i++) {
-            placesForCarriage21.add(new Place(i, rand.nextBoolean(), carriage21));
-            placesForCarriage22.add(new Place(i, rand.nextBoolean(), carriage22));
-            placesForCarriage23.add(new Place(i, rand.nextBoolean(), carriage23));
-        }
-        carriage21.setPlaces(placesForCarriage21);
-        carriage22.setPlaces(placesForCarriage22);
-        carriage23.setPlaces(placesForCarriage23);
-        ArrayList<Carriage> crgs2 = new ArrayList<>();
-        crgs2.add(carriage21);
-        crgs2.add(carriage22);
-        crgs2.add(carriage23);
-        CarriagesPane cp2 = new CarriagesPane(crgs2, null);
+        PlaceOrdersPane placeOrdersPane = new PlaceOrdersPane(
+                "141 Л" // витягуємо ім'я маршруту
+        );
+        CarriagesPane cp1 = new CarriagesPane(crgs1, placeOrdersPane);
 
-        Carriage carriage31 = new Carriage(null, 7, CarriageType.SV);
-        Carriage carriage32 = new Carriage(null, 8, CarriageType.SV);
-        Carriage carriage33 = new Carriage(null, 9, CarriageType.SV);
-        ArrayList<Place> placesForCarriage31 = new ArrayList<>();
-        ArrayList<Place> placesForCarriage32 = new ArrayList<>();
-        ArrayList<Place> placesForCarriage33 = new ArrayList<>();
-        for (int i = 1; i <=CarriageType.SV.getCapasity(); i++) {
-            placesForCarriage31.add(new Place(i, rand.nextBoolean(), carriage31));
-            placesForCarriage32.add(new Place(i, rand.nextBoolean(), carriage32));
-            placesForCarriage33.add(new Place(i, rand.nextBoolean(), carriage33));
-        }
-        carriage31.setPlaces(placesForCarriage31);
-        carriage32.setPlaces(placesForCarriage32);
-        carriage33.setPlaces(placesForCarriage33);
-        ArrayList<Carriage> crgs3 = new ArrayList<>();
-        crgs3.add(carriage31);
-        crgs3.add(carriage32);
-        crgs3.add(carriage33);
-        CarriagesPane cp3 = new CarriagesPane(crgs3, null);
+//        Carriage carriage21 = new Carriage(null, 4, CarriageType.COMPARATMENT);
+//        Carriage carriage22 = new Carriage(null, 5, CarriageType.COMPARATMENT);
+//        Carriage carriage23 = new Carriage(null, 6, CarriageType.COMPARATMENT);
+//        ArrayList<Place> placesForCarriage21 = new ArrayList<>();
+//        ArrayList<Place> placesForCarriage22 = new ArrayList<>();
+//        ArrayList<Place> placesForCarriage23 = new ArrayList<>();
+//        for (int i = 1; i <=CarriageType.COMPARATMENT.getCapasity(); i++) {
+//            placesForCarriage21.add(new Place(i, rand.nextBoolean(), carriage21));
+//            placesForCarriage22.add(new Place(i, rand.nextBoolean(), carriage22));
+//            placesForCarriage23.add(new Place(i, rand.nextBoolean(), carriage23));
+//        }
+//        carriage21.setPlaces(placesForCarriage21);
+//        carriage22.setPlaces(placesForCarriage22);
+//        carriage23.setPlaces(placesForCarriage23);
+//        ArrayList<Carriage> crgs2 = new ArrayList<>();
+//        crgs2.add(carriage21);
+//        crgs2.add(carriage22);
+//        crgs2.add(carriage23);
+//        CarriagesPane cp2 = new CarriagesPane(crgs2, null);
+//
+//        Carriage carriage31 = new Carriage(null, 7, CarriageType.SV);
+//        Carriage carriage32 = new Carriage(null, 8, CarriageType.SV);
+//        Carriage carriage33 = new Carriage(null, 9, CarriageType.SV);
+//        ArrayList<Place> placesForCarriage31 = new ArrayList<>();
+//        ArrayList<Place> placesForCarriage32 = new ArrayList<>();
+//        ArrayList<Place> placesForCarriage33 = new ArrayList<>();
+//        for (int i = 1; i <=CarriageType.SV.getCapasity(); i++) {
+//            placesForCarriage31.add(new Place(i, rand.nextBoolean(), carriage31));
+//            placesForCarriage32.add(new Place(i, rand.nextBoolean(), carriage32));
+//            placesForCarriage33.add(new Place(i, rand.nextBoolean(), carriage33));
+//        }
+//        carriage31.setPlaces(placesForCarriage31);
+//        carriage32.setPlaces(placesForCarriage32);
+//        carriage33.setPlaces(placesForCarriage33);
+//        ArrayList<Carriage> crgs3 = new ArrayList<>();
+//        crgs3.add(carriage31);
+//        crgs3.add(carriage32);
+//        crgs3.add(carriage33);
+//        CarriagesPane cp3 = new CarriagesPane(crgs3, null);
 
-        vbTest.getChildren().addAll( cp3);
 
+
+        vbTest.getChildren().addAll(cp1, placeOrdersPane);
         Scene scene = new Scene(vbTest);
 
 

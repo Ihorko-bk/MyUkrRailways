@@ -278,7 +278,10 @@
 }
 
 
-
+.placeOrderPane .label {
+    -fx-text-fill: #262626;
+    -fx-font-weight: bold;
+}
 .placeOrderList {
     -fx-pref-width: 1000px;
     -fx-pref-height: 149px;
@@ -286,38 +289,135 @@
     -fx-border-color: #d7dce1;
     -fx-border-width: 0 1px 1px 1px;
     -fx-padding: 16px 20px 35px 0;
-    -fx-alignment: right;
+    -fx-alignment: center-right;
 }
 .placeOrderList #routeNumberBox {
     -fx-pref-width: 112px;
     -fx-pref-height: 62px;
-    -fx-background-color: #f9fbfd;
+    /*-fx-background-color: #f9fbfd;*/
     -fx-border-color: #d7dce1;
+    -fx-border-width: 1px;
+    -fx-border-insets: 17px 0px 19px 0px;
 }
 .placeOrderList #routeNumberBox .label {
     -fx-alignment: center;
     -fx-font-size: 20px;
+    -fx-font-weight: bold;
 }
-.placeOrderPane {
-
+.passengerNumber {
+    -fx-padding: 0px 0px 0px 5px;
 }
 .placeOrderBox {
     -fx-pref-width: 113px;
     -fx-pref-height: 61px;
+    -fx-border-color: #d7dce1;
+    -fx-border-width: 1px 1px 1px 0px;
+}
+.placeOrderBox .label{
+    -fx-font-size: 14px;
+    -fx-font-weight: normal;
 }
 .placeOrderCloseButton {
     -fx-cursor: hand;
+    -fx-pref-width: 18px;
 }
 
 #totalCostLabel {
 
 }
-#orderTicketButton {
+.orderTicketButton {
     -fx-pref-width: 270px;
     -fx-pref-height: 60px;
+    /*-fx-max-width: 270px;*/
+    /*-fx-max-height: 60px;*/
     -fx-background-color: linear-gradient(#79b6db 0%, #b3dbf2 100%);
 }
-#orderTicketButton:hover {
+.orderTicketButton:hover {
     -fx-opacity: .8;
     -fx-cursor: hand;
 }
+
+
+
+.passengerData {
+
+}
+.passengerData .passengerNumber .label{
+    -fx-pref-width: 1000px;
+    -fx-pref-height: 50px;
+    -fx-padding: 0px 0px 0px 20px;
+    -fx-background-color: #a1b0b9;
+    -fx-text-alignment: left;
+}
+
+.passengerData .main {
+
+}
+.passengerData .main .btnCancel .label{
+    -fx-cursor: hand;
+    -fx-text-fill: #245c78;
+    -fx-underline: true;
+    -fx-pref-width: 339px;
+    -fx-pref-height: 50px;
+    -fx-text-alignment: right;
+    /*додай сюди padding зверху*/
+}
+.passengerData .main .btnCancel .label:hover{
+    -fx-underline: false;
+}
+
+.passengerData .main .hbRouteCarriagePlaceInfo {
+    -fx-pref-width: 958px;
+    -fx-pref-height: 26px;
+    -fx-spacing: 20px;
+    -fx-alignment: center-left;
+}
+.passengerData .main .hbRouteCarriagePlaceInfo .label {
+
+}
+
+.passengerData .main .hbBuyingDocTypeServicesAndCost{
+
+}
+.passengerData .main .hbBuyingDocTypeServicesAndCost .pBuyingAndDocType{
+
+}
+.passengerData .main .hbBuyingDocTypeServicesAndCost .pBuyingAndDocType .vbDocType{
+
+}
+.passengerData .main .hbBuyingDocTypeServicesAndCost .pServices{
+
+}
+.passengerData .main .hbBuyingDocTypeServicesAndCost .pServices .vbServices{
+
+}
+
+.passengerData .main {
+
+}
+/*опиши тут ті дві лейбли документ тайп та серві*/
+.passengerData .main .hbBuyingDocTypeServicesAndCost .pBuyingAndDocType .vbDocType .label,
+.passengerData .main .hbBuyingDocTypeServicesAndCost . . .label {
+
+}
+
+
+.passengerData .main {
+
+}
+
+.passengerData {
+
+}
+
+
+
+.nameField {
+
+}
+.nameField .label{
+
+}
+.nameField .text-field{
+
+ }

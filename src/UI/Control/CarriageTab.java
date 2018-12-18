@@ -209,8 +209,6 @@ public class CarriageTab extends Pane implements Toggle {     // приведи 
 
             ((CarriagesPane)getParent().getParent()).changeCarriageFloor(carriageFloor);
 
-            System.out.println("doing");
-
         }
     }
     public void fire() {
