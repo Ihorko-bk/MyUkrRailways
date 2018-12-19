@@ -1,6 +1,7 @@
 package UI.Control;
 
 import Entity.Place;
+import javafx.beans.property.BooleanProperty;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -12,17 +13,22 @@ import java.util.ArrayList;
 public class PassengerData extends VBox {
 
     private PlaceOrder placeOrder;
+    private double ticketCost;
+    public double getTicketCost() {
+        return ticketCost;
+    }
+
+    private double bedLinenCost = 30;
+    private double beverageCost = 8;
+    private BooleanProperty bpTotalCostChanges;
 
     private Label lblPassengerNumber;
-
     private VBox vbMain;
         private HBox hbFLNamesAndCancel;
             private NameField nfLastName, nfFirstName;
             private Label btnCancel;
-
         private HBox hbRouteCarriagePlaceInfo;
             Label lblRouteInfo, lblCarriageInfo, lblPlaceInfo;
-
         private HBox hbBuyingDocTypeServicesAndCost;
             private Pane pBuyingAndDocType;
                 private RadioButton rbBuy;
@@ -34,16 +40,21 @@ public class PassengerData extends VBox {
                 private VBox vbServices;
                     private Label lblServices;
                     private CheckBox chbBedLinen, chb2Beverage, chb1Beverage;
+            private BorderPane bpTicketCost;
+                private Label lblTicketCost;
 
-    private BorderPane bpTicketCost;
-        private Label lblTicketCost;
 
-    private PassengerData(PlaceOrder placeOrder) {
+    private PassengerData(PlaceOrder placeOrder, BooleanProperty bpTotalCostChanges) {
         super();
         this.placeOrder = placeOrder;
+        this.bpTotalCostChanges = bpTotalCostChanges;
+        this.ticketCost = 0;
+        // а мало б бути ось так:
+//        ticketCost = placeOrder.getPlaceButton().getPlace().getCost();
         createLblPassengerNumber(placeOrder.getPassengerNumber());
         createVBMain();
 
+        getChildren().addAll(lblPassengerNumber, vbMain);
         getStyleClass().add("passengerData");
     }
 
@@ -61,8 +72,7 @@ public class PassengerData extends VBox {
         createHBRouteCarriagePlaceInfo();
         createHBBuyingDocTypeServicesAndCost();
 
-    // відкрий ---------------------------------------------------------------------------------------<<<<<<<<<<<<<<
-//        vbMain = new VBox(hbFLNamesAndCancel, hbRouteCarriagePlaceInfo, hbBuyingDocTypeServicesAndCost);
+        vbMain = new VBox(hbFLNamesAndCancel, hbRouteCarriagePlaceInfo, hbBuyingDocTypeServicesAndCost);
         vbMain.getStyleClass().add("main");
     }
     private void createHBFLNamesAndCancel() {
@@ -95,8 +105,9 @@ public class PassengerData extends VBox {
     private void createHBBuyingDocTypeServicesAndCost() {
         createPaneBuyingAndDocType();
         createPaneServices();
+        createBPTicketCost();
 
-//        hbBuyingDocTypeServicesAndCost = new HBox(pBuyingAndDocType, _);    --------------------------------------------------------
+        hbBuyingDocTypeServicesAndCost = new HBox(pBuyingAndDocType, pServices, bpTicketCost);
         hbBuyingDocTypeServicesAndCost.getStyleClass().add("hbBuyingDocTypeServicesAndCost");
     }
 
@@ -141,25 +152,69 @@ public class PassengerData extends VBox {
     private void createPaneServices() {
         createVBServices();
 
-
-//        pServices = new Pane(_);                ---------------------------------------------------------------------------
+        pServices = new Pane(vbServices);
         pServices.getStyleClass().add("pServices");
     }
-
     private void createVBServices() {
         lblServices = new Label("Services");
+        createChBsServices();
 
-
-//        vbServices = new VBox(lblServices, _);      ------------------------------------------------------------------------
+        vbServices = new VBox(lblServices, chbBedLinen, chb2Beverage, chb1Beverage);
         vbServices.getStyleClass().add("vbServices");
+    }
+    private void createChBsServices() {
+        chbBedLinen = createCheckBoxServices("Bed linen", bedLinenCost);
+        chb2Beverage = createCheckBoxServices("2 Beverage", 2*beverageCost);
+        chb1Beverage = createCheckBoxServices("1 Beverage", beverageCost);
+    }
+    private CheckBox createCheckBoxServices(String name, double costValue) {
+        CheckBox cb = new CheckBox(name);
+        cb.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) addToTicketCost(costValue);
+            else addToTicketCost(-costValue);
+        });
+        return cb;
+    }
+
+    private void createBPTicketCost() {
+        lblTicketCost = new Label();
+        setTicketCost(ticketCost);
+
+        bpTicketCost = new BorderPane();
+        bpTicketCost.setTop(lblTicketCost);
+        bpTicketCost.getStyleClass().add("bpTicketCost");
+    }
+    private void setTicketCost(double cost) {
+        lblTicketCost.setText(cost + " UAH");
+    }
+    private void addToTicketCost(double value) {
+        ticketCost += value;
+        setTicketCost(ticketCost);
+        bpTotalCostChanges.setValue(true);
     }
 
 
-    public static ArrayList<PassengerData> createPassengerDataListFromPlaceOrderList(ArrayList<PlaceOrder> placeOrders) {
+
+
+
+    // "утилітні" методи:
+
+    // створення списку PassengerData'ів зі списку PlaceOrder'ів
+    public static ArrayList<PassengerData> createPassengerDataListFromPlaceOrderList(
+            ArrayList<PlaceOrder> placeOrders, BooleanProperty bpTotalCostChanges
+    ) {
         ArrayList<PassengerData> passengerDataList = new ArrayList<>();
         for (int i = 0; i < placeOrders.size(); i++) {
-            passengerDataList.add(new PassengerData(placeOrders.get(i)));
+            passengerDataList.add(new PassengerData(placeOrders.get(i), bpTotalCostChanges));
         }
         return passengerDataList;
+    }
+    // підрахунок загальної вартості білетів
+    public static double countTotalTicketCost(ArrayList<PassengerData> passengerDatas) {
+        double totalTicketsCost = 0;
+        for (PassengerData pd:passengerDatas) {
+            totalTicketsCost += pd.getTicketCost();
+        }
+        return totalTicketsCost;
     }
 }

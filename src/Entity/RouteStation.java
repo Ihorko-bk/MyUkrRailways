@@ -7,16 +7,16 @@ public class RouteStation implements Comparator {
     private int id;
     private Station station ;
     private Route route;
-    private int ordinance;
+    private int ordinance;      // це порядковість!
     private LocalTime arrivalTime;      //з LocalDateTime на LocalTime
     private LocalTime departureTime;    //з LocalDateTime на LocalTime
 
     public RouteStation() {
     }
 
-    //дописав id до конструктора щоб сортувати по ньому, так як в нас вже LocalTime
-    public RouteStation(int id, Station station, Route route, LocalTime arrivalTime, LocalTime departureTime) {
-        this.id = id;
+    //дописав ordinance(порядковість) до конструктора щоб сортувати по ньому, так як в нас вже LocalTime
+    public RouteStation(int ordinance, Station station, Route route, LocalTime arrivalTime, LocalTime departureTime) {
+        this.ordinance = ordinance;
         this.station = station;
         this.route = route;
         this.arrivalTime = arrivalTime;
@@ -26,7 +26,7 @@ public class RouteStation implements Comparator {
     //компаратор для сортування зупинок по id(а отже по порядку). хз чи потрібно буде, але чомусь захотілось..
     @Override
     public int compare(Object o1, Object o2) {
-        return Integer.compare(((RouteStation) o1).id, ((RouteStation) o2).id);
+        return Integer.compare(((RouteStation) o1).ordinance, ((RouteStation) o2).ordinance);
     }
 
     public int getId() {
