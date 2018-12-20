@@ -3,10 +3,14 @@ package UI.View;
 import UI.Control.PlaceButton;
 import UI.Control.PlaceOrder;
 import UI.Control.SimpleButton;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+import java.util.ArrayList;
 
 public class PlaceOrdersPane extends VBox {
 
@@ -104,6 +108,17 @@ public class PlaceOrdersPane extends VBox {
         btnOrderTickets = new SimpleButton("Order tickets", event -> {
 
             // туть пишемо перехід на форму з заповленнями білетів особистими даними
+            ArrayList<PlaceOrder> placeOrders = new ArrayList<>();
+            for (int i = 1; i < placeOrdersList.getChildren().size(); i++) {
+                placeOrders.add((PlaceOrder) placeOrdersList.getChildren().get(i));
+            }
+
+            EnterPassengersDataPane enterPassengersDataPane = new EnterPassengersDataPane(placeOrders);
+            Scene scene = new Scene(enterPassengersDataPane);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+
 
         });
         getChildren().add(btnOrderTickets);

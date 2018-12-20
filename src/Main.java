@@ -1,6 +1,7 @@
 import Entity.Carriage;
 import Entity.CarriageType;
 import Entity.Place;
+import Entity.Route;
 import UI.Control.CarriageFloor;
 import UI.Control.CarriageTab;
 import UI.Control.PlaceButton;
@@ -32,13 +33,16 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+
         ArrayList<Place> placesForCarriage1 = new ArrayList<>();
         ArrayList<Place> placesForCarriage2 = new ArrayList<>();
         ArrayList<Place> placesForCarriage3 = new ArrayList<>();
         Random rand = new Random(8462846L);
-        Carriage carriage1 = new Carriage(null, 1, CarriageType.COUCHETTE);
-        Carriage carriage2 = new Carriage(null, 2, CarriageType.COUCHETTE);
-        Carriage carriage3 = new Carriage(null, 3, CarriageType.COUCHETTE);
+        Route route1 = new Route();
+        route1.setName("141 Л");
+        Carriage carriage1 = new Carriage(route1, 1, CarriageType.COUCHETTE);
+        Carriage carriage2 = new Carriage(route1, 2, CarriageType.COUCHETTE);
+        Carriage carriage3 = new Carriage(route1, 3, CarriageType.COUCHETTE);
         for (int i = 1; i <=54; i++) {
             placesForCarriage1.add(new Place(i, rand.nextBoolean(), carriage1));
             placesForCarriage2.add(new Place(i, rand.nextBoolean(), carriage2));

@@ -1,6 +1,7 @@
 package UI.Control;
 
 import Entity.Place;
+import UI.View.EnterPassengersDataPane;
 import javafx.beans.property.BooleanProperty;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 public class PassengerData extends VBox {
 
     private PlaceOrder placeOrder;
+    private EnterPassengersDataPane enterPassengersDataPane;
     private double ticketCost;
     public double getTicketCost() {
         return ticketCost;
@@ -20,7 +22,6 @@ public class PassengerData extends VBox {
 
     private double bedLinenCost = 30;
     private double beverageCost = 8;
-    private BooleanProperty bpTotalCostChanges;
 
     private Label lblPassengerNumber;
     private VBox vbMain;
@@ -44,13 +45,15 @@ public class PassengerData extends VBox {
                 private Label lblTicketCost;
 
 
-    private PassengerData(PlaceOrder placeOrder, BooleanProperty bpTotalCostChanges) {
+    private PassengerData(PlaceOrder placeOrder, EnterPassengersDataPane enterPassengersDataPane) {
         super();
         this.placeOrder = placeOrder;
-        this.bpTotalCostChanges = bpTotalCostChanges;
+        this.enterPassengersDataPane = enterPassengersDataPane;
+
         this.ticketCost = 0;
         // а мало б бути ось так:
 //        ticketCost = placeOrder.getPlaceButton().getPlace().getCost();
+
         createLblPassengerNumber(placeOrder.getPassengerNumber());
         createVBMain();
 
@@ -61,9 +64,8 @@ public class PassengerData extends VBox {
     private void createLblPassengerNumber(String passengerNumber) {
         lblPassengerNumber = new Label(passengerNumber);
         lblPassengerNumber.getStyleClass().add("passengerNumber");
-        getChildren().add(lblPassengerNumber);
     }
-    public void changePassengerNumber(int number) {
+    public void setPassengerNumber(int number) {
         lblPassengerNumber.setText("Passenger " + number);
     }
 
@@ -87,18 +89,17 @@ public class PassengerData extends VBox {
     private void createCancelButton() {
         btnCancel = new Label("Cancel");
         btnCancel.getStyleClass().add("btnCancel");
-        btnCancel.setOnMouseClicked(event -> {
-            System.out.println("Cancel click");
-        });
+        // допиши сюди спливаюче вікно з підтвердженням скасування
+        btnCancel.setOnMouseClicked(event -> enterPassengersDataPane.cancelOrder(this));
     }
 
     private void createHBRouteCarriagePlaceInfo() {
         Place place = placeOrder.getPlaceButton().getPlace();
-        lblRouteInfo = new Label(place.getCarriage().getRoute().getName());
-        lblCarriageInfo = new Label(place.getCarriage().getNumber() + "");
-        lblPlaceInfo = new Label(place.getNumber() + "");
+        lblRouteInfo = new Label("Train " + place.getCarriage().getRoute().getName());
+        lblCarriageInfo = new Label("Coach " + place.getCarriage().getNumber());
+        lblPlaceInfo = new Label(String.format("Place %2d", place.getNumber()));
 
-        hbRouteCarriagePlaceInfo = new HBox(lblRouteInfo, lblRouteInfo, lblPlaceInfo);
+        hbRouteCarriagePlaceInfo = new HBox(lblRouteInfo, lblCarriageInfo, lblPlaceInfo);
         hbRouteCarriagePlaceInfo.getStyleClass().add("hbRouteCarriagePlaceInfo");
     }
 
@@ -185,12 +186,12 @@ public class PassengerData extends VBox {
         bpTicketCost.getStyleClass().add("bpTicketCost");
     }
     private void setTicketCost(double cost) {
-        lblTicketCost.setText(cost + " UAH");
+        lblTicketCost.setText(String.format("%2.2f UAH", cost));
     }
     private void addToTicketCost(double value) {
         ticketCost += value;
         setTicketCost(ticketCost);
-        bpTotalCostChanges.setValue(true);
+        enterPassengersDataPane.recountTotalCost();
     }
 
 
@@ -201,11 +202,10 @@ public class PassengerData extends VBox {
 
     // створення списку PassengerData'ів зі списку PlaceOrder'ів
     public static ArrayList<PassengerData> createPassengerDataListFromPlaceOrderList(
-            ArrayList<PlaceOrder> placeOrders, BooleanProperty bpTotalCostChanges
-    ) {
+            ArrayList<PlaceOrder> placeOrders, EnterPassengersDataPane enterPassengersDataPane) {
         ArrayList<PassengerData> passengerDataList = new ArrayList<>();
         for (int i = 0; i < placeOrders.size(); i++) {
-            passengerDataList.add(new PassengerData(placeOrders.get(i), bpTotalCostChanges));
+            passengerDataList.add(new PassengerData(placeOrders.get(i), enterPassengersDataPane));
         }
         return passengerDataList;
     }

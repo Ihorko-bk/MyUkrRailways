@@ -337,7 +337,15 @@
     -fx-cursor: hand;
 }
 
+.nameField {
 
+}
+.nameField .label{
+
+}
+.nameField .text-field{
+
+}
 
 .passengerData {
 
@@ -391,6 +399,11 @@
 .passengerData .main .hbBuyingDocTypeServicesAndCost .pServices .vbServices{
 
 }
+/*опиши тут ті дві лейбли документ тайп та сервіс*/
+.passengerData .main .hbBuyingDocTypeServicesAndCost .pBuyingAndDocType .vbDocType .label,
+.passengerData .main .hbBuyingDocTypeServicesAndCost .pServices .vbServices .label {
+
+}
 .passengerData .main .hbBuyingDocTypeServicesAndCost .bpTicketCost{
 
 }
@@ -402,27 +415,40 @@
 
 
 
-/*перепиши на іншу форму!!!*/
-.passengerData .hbTotalCostAndBuyButton {
+.enterPassengersDataPane {
+
+}
+.enterPassengersDataPane .lblEnterPassengerData{
+
+}
+.enterPassengersDataPane .lblBeSureAndBlaBla{
+
+}
+.enterPassengersDataPane .vbPassengersData{
+
+}
+.enterPassengersDataPane .hbTotalCostAndBuyButton {
 
 }
 
-.passengerData .hbTotalCostAndBuyButton .vbTotalCostAndBuyButton .bpTotalCost{
+.enterPassengersDataPane .hbTotalCostAndBuyButton .vbTotalCostAndBuyButton {
+
+}
+.enterPassengersDataPane .hbTotalCostAndBuyButton .vbTotalCostAndBuyButton .bpTotalCost{
+
+}
+.enterPassengersDataPane .hbTotalCostAndBuyButton .vbTotalCostAndBuyButton .bpTotalCost .lblLabelTotalCost{
+
+}
+.enterPassengersDataPane .hbTotalCostAndBuyButton .vbTotalCostAndBuyButton .bpTotalCost .lblTotalCost{
+
+}
+.enterPassengersDataPane .hbTotalCostAndBuyButton .vbTotalCostAndBuyButton .btnBuy{
 
 }
 
-.passengerData .hbTotalCostAndBuyButton .vbTotalCostAndBuyButton .{
-
-}
 
 
-
-
-/*опиши тут ті дві лейбли документ тайп та сервіс*/
-.passengerData .main .hbBuyingDocTypeServicesAndCost .pBuyingAndDocType .vbDocType .label,
-.passengerData .main .hbBuyingDocTypeServicesAndCost . . .label {
-
-}
 
 
 .passengerData .main {
@@ -435,12 +461,3 @@
 
 
 
-.nameField {
-
-}
-.nameField .label{
-
-}
-.nameField .text-field{
-
- }

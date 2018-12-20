@@ -6,7 +6,9 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
@@ -46,7 +48,7 @@ public class TestAllShoPopaloTut extends Application {
             add(new Station("Odesa"));
             add(new Station("Dnipro Holovnyy"));
         }});
-        Pane pane = new Pane(searchRoutesPane);
+//        Pane pane = new Pane(searchRoutesPane);
 //
         DatePicker datePicker = new DatePicker(LocalDate.now());
         datePicker.valueProperty().addListener(observable -> System.out.println(datePicker.getValue()));
@@ -58,11 +60,19 @@ public class TestAllShoPopaloTut extends Application {
         btn2.setOnAction(event -> System.out.println(datePicker.getValue()));
 //        Pane pane = new VBox(datePicker, btn, btn1, btn2);
 
+        ArrayList<Label> labels = new ArrayList<>();
+        labels.add(new Label("First"));
+        labels.add(new Label("Second"));
+        labels.add(new Label("Third"));
+
+        VBox pane = new VBox();
+        pane.getChildren().addAll(labels);
         pane.setMinSize(700, 700);
         Scene scene = new Scene(pane, 1040, 400);
         scene.getStylesheets().add("css/uz.css");
         primaryStage.setScene(scene);
         primaryStage.show();
+        labels.get(0).setText("NotFirst!");
 
 
     }
