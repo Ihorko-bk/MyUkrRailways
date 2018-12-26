@@ -556,17 +556,49 @@
 
 }
 
+.routesTableHead {
+    -fx-pref-width: 999px;
+    -fx-pref-height: 51px;
 
-
-
-
-.passengerData .main {
-
+    -fx-border-color: #d7dce1;
+    -fx-border-width: 1px 0 1px 1px;
 }
 
-.passengerData {
+.routesTableHeadBP {
+    -fx-background-color: #e6e9ed;
+    -fx-border-color: #d7dce1;
+    -fx-border-width: 0 1px 0 0;
+    -fx-padding: 14px 0 0 10px;
+    -fx-alignment: center-left;
+}
+.routesTableHeadBPVB {
 
 }
+.routesTableHeadBP.bpTrainNumber {
+    -fx-pref-width: 116px;
+}
+.routesTableHeadBP.bpFromTo {
+    -fx-pref-width: 300px;
+}
+.routesTableHeadBP.bpDate {
+    -fx-pref-width: 193px;
+}
+.routesTableHeadBP.bpDepartureArrival {
+    -fx-pref-width: 120px;
+    -fx-padding: 4px 0 0 10px;
+}
+.routesTableHeadBP.bpDuration {
+    -fx-pref-width: 90px;
+}
+.routesTableHeadBP.bpSeatsAvailable {
+    -fx-pref-width: 180px;
+}
 
-
-
+.routesTableHeadColumnSimpleLabel {
+    -fx-text-fill: #777a7e;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+.routesTableHeadColumnLabel {
+    -fx-cursor: hand;
+}

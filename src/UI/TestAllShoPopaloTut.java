@@ -1,6 +1,8 @@
 package UI;
 
 import Entity.Station;
+import UI.Control.RoutesTableHead;
+import UI.View.RoutesTable;
 import UI.View.SearchRoutesPane;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -68,7 +70,8 @@ public class TestAllShoPopaloTut extends Application {
         VBox pane = new VBox();
         pane.getChildren().addAll(labels);
         pane.setMinSize(700, 700);
-        Scene scene = new Scene(pane, 1040, 400);
+
+        Scene scene = new Scene(new Pane(new RoutesTableHead(new RoutesTable())), 1040, 400);
         scene.getStylesheets().add("css/uz.css");
         primaryStage.setScene(scene);
         primaryStage.show();

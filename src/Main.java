@@ -12,7 +12,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.Separator;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
@@ -54,7 +53,7 @@ public class Main extends Application {
 
         Carriage carriageSV = new Carriage(null, 4, CarriageType.SV);
         ArrayList<Place> placesForCarriageSV = new ArrayList<>();
-        for (int i = 0; i < CarriageType.SV.getCapasity(); i++) {
+        for (int i = 0; i < CarriageType.SV.getCapacity(); i++) {
             placesForCarriageSV.add(new Place(i, rand.nextBoolean(), carriageSV));
         }
         carriageSV.setPlaces(placesForCarriageSV);
@@ -172,7 +171,7 @@ public class Main extends Application {
         //створення місць для заповнення вагону
         ArrayList<PlaceButton> placeButtons = new ArrayList<>();
         Random random = new Random(8462846L);
-        for (int i = 1; i <= carriageType.getCapasity(); i++) {
+        for (int i = 1; i <= carriageType.getCapacity(); i++) {
             placeButtons.add(new PlaceButton(i, random.nextBoolean()));
         }
         // ---------------------------------------------------------------------------ліві верхні
@@ -240,7 +239,7 @@ public class Main extends Application {
 //        ArrayList<Place> placesForCarriage21 = new ArrayList<>();
 //        ArrayList<Place> placesForCarriage22 = new ArrayList<>();
 //        ArrayList<Place> placesForCarriage23 = new ArrayList<>();
-//        for (int i = 1; i <=CarriageType.COMPARATMENT.getCapasity(); i++) {
+//        for (int i = 1; i <=CarriageType.COMPARATMENT.getCapacity(); i++) {
 //            placesForCarriage21.add(new Place(i, rand.nextBoolean(), carriage21));
 //            placesForCarriage22.add(new Place(i, rand.nextBoolean(), carriage22));
 //            placesForCarriage23.add(new Place(i, rand.nextBoolean(), carriage23));
@@ -260,7 +259,7 @@ public class Main extends Application {
 //        ArrayList<Place> placesForCarriage31 = new ArrayList<>();
 //        ArrayList<Place> placesForCarriage32 = new ArrayList<>();
 //        ArrayList<Place> placesForCarriage33 = new ArrayList<>();
-//        for (int i = 1; i <=CarriageType.SV.getCapasity(); i++) {
+//        for (int i = 1; i <=CarriageType.SV.getCapacity(); i++) {
 //            placesForCarriage31.add(new Place(i, rand.nextBoolean(), carriage31));
 //            placesForCarriage32.add(new Place(i, rand.nextBoolean(), carriage32));
 //            placesForCarriage33.add(new Place(i, rand.nextBoolean(), carriage33));

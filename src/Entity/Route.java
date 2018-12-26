@@ -2,9 +2,13 @@ package Entity;
 
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class Route {
+    // нам треба витягувати(а отже там і зберігати) сполучення з БД. бо якщо брати першу і останню
+    // зупинку, то буде маршрут наш називатись з наших введених початкових та кінцевих точок - лажа.
+
     private int id;
     private String name;    // додав ім'я(номер) поїзда(маршруту)
     // одразу ArrayList, бо нам ітак ніколи не прийдеться міняти його інший. Аналогічно всюди.
@@ -18,9 +22,9 @@ public class Route {
 
 
     // повертає сполучення маршруту (чомусь в даний момент воно мені хочеться тут мати)
-    public String getRouteFromTo() {
-        return getFirstRouteStation().toString() + getLastRouteStation().toString();
-    }
+//    public String getRouteFromTo() {
+//        return getFirstRouteStation().toString() + getLastRouteStation().toString();
+//    }
     // повертає першу станцію(зупинку) маршруту(helper)
     public RouteStation getFirstRouteStation() {
         return routeStations.get(0);
@@ -53,6 +57,13 @@ public class Route {
         }
         return sublistOfCarriages;
     }
+
+    // метод, який розраховує тривалість поїздки.
+    // ним же, методом сумування результату з датою відправлення отримуємо дату прибуття.
+    // бляха, яка ж це лажа..
+//    public LocalTime getRouteDuration() {
+//
+//    }
 
 
 

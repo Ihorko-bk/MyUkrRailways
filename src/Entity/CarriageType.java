@@ -3,13 +3,13 @@ package Entity;
 public enum CarriageType {
     SV(18), COMPARATMENT(36), COUCHETTE(54);
 
-    private int capasity;
+    private int capacity;
 
-    CarriageType(int capasity) {
-        this.capasity = capasity;
+    CarriageType(int capacity) {
+        this.capacity = capacity;
     }
 
-    public int getCapasity() {
-        return capasity;
+    public int getCapacity() {
+        return capacity;
     }
 }
