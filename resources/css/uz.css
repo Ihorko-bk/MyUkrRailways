@@ -1,3 +1,5 @@
+
+
 /*форма пошуку*/
 /*HBox, в якому всі форми для задання параметрів пошуку*/
 .searchRoutesBox {
@@ -304,7 +306,7 @@
     -fx-font-size: 20px;
     -fx-font-weight: bold;
 }
-.passengerNumber {
+.placeOrderList .passengerNumber {
     -fx-padding: 0px 0px 0px 5px;
 }
 .placeOrderBox {
@@ -337,40 +339,71 @@
     -fx-cursor: hand;
 }
 
+
 .nameField {
+    -fx-spacing: 5px;
+    -fx-font-size: 14px;
+}
+.nameField .label {
+    -fx-pref-width: 292px;
+    -fx-pref-height: 17px;
+    -fx-text-fill: #222;
 
 }
-.nameField .label{
-
+.nameField .text-field {
+    -fx-pref-width: 292px;
+    -fx-pref-height: 32px;
+    -fx-background-color: #eaeff1;
+    -fx-background-radius: 5px;
+    -fx-border-color: #ced3d8;
+    -fx-border-radius: 5px;
 }
-.nameField .text-field{
-
+.nameField .text-field:focused {
+    -fx-border-color: #68b1dd;
 }
+/*.nameField .text-field:error {*/
+    /*-fx-border-color: #red;*/
+/*}*/
 
 .passengerData {
-
 }
-.passengerData .passengerNumber .label{
+.passengerData .passengerNumber {
     -fx-pref-width: 1000px;
     -fx-pref-height: 50px;
     -fx-padding: 0px 0px 0px 20px;
     -fx-background-color: #a1b0b9;
-    -fx-text-alignment: left;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+.passengerData .passengerNumber .label {
+
+
+    /*-fx-text-alignment: left;*/
 }
 
 .passengerData .main {
-
+    -fx-padding: 20px;
+    -fx-background-color: #f9fbfd;
 }
-.passengerData .main .btnCancel .label{
+.passengerData .main .hbFLNamesAndCancel {
+    -fx-spacing: 35px;
+}
+.passengerData .main .hbFLNamesAndCancel .hbBtnCancel {
+    -fx-padding: 34px 0px 18px 0px; /*18 0 18 33*/
+    -fx-pref-width: 304px;
+    -fx-alignment: top-right;
+}
+.passengerData .main .hbFLNamesAndCancel .hbBtnCancel .btnCancel {
     -fx-cursor: hand;
     -fx-text-fill: #245c78;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
     -fx-underline: true;
-    -fx-pref-width: 339px;
-    -fx-pref-height: 50px;
-    -fx-text-alignment: right;
+    /*-fx-pref-width: 339px;*/
+    /*-fx-pref-height: 50px;*/
     /*додай сюди padding зверху*/
 }
-.passengerData .main .btnCancel .label:hover{
+.passengerData .main .hbFLNamesAndCancel .hbBtnCancel .btnCancel:hover{
     -fx-underline: false;
 }
 
@@ -378,39 +411,89 @@
     -fx-pref-width: 958px;
     -fx-pref-height: 26px;
     -fx-spacing: 20px;
+    -fx-padding: 15px 0 0 0;
     -fx-alignment: center-left;
+
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
 }
 .passengerData .main .hbRouteCarriagePlaceInfo .label {
-
+    -fx-text-fill: #222;
 }
 
-.passengerData .main .hbBuyingDocTypeServicesAndCost{
-
+.passengerData .main .hbBuyingDocTypeServicesAndCost {
+    -fx-border-width: 1px;
+    -fx-border-color: #d7dce1;
+    -fx-pref-width: 958px;
+    -fx-pref-height: 150px;
+    -fx-font-size: 14px;
 }
-.passengerData .main .hbBuyingDocTypeServicesAndCost .pBuyingAndDocType{
-
+.passengerData .main .hbBuyingDocTypeServicesAndCost .label {
+    -fx-text-fill: #8a8d91;
+    -fx-font-weight: bold;
+ }
+.passengerData .main .hbBuyingDocTypeServicesAndCost .pBuyingAndDocType .radio-button  {
+    -fx-pref-height: 17px;
 }
-.passengerData .main .hbBuyingDocTypeServicesAndCost .pBuyingAndDocType .vbDocType{
-
+.passengerData .main .hbBuyingDocTypeServicesAndCost .pBuyingAndDocType .radio-button .radio {
+    -fx-background-color: transparent;
+    -fx-mark-color: #68b1dd;
+    -fx-border-color: #68b1dd;
+    -fx-border-radius: 15px;
+    -fx-border-width: 2px;
+    -fx-padding: 3px;
 }
-.passengerData .main .hbBuyingDocTypeServicesAndCost .pServices{
-
+.passengerData .main .hbBuyingDocTypeServicesAndCost .pBuyingAndDocType .radio-button .radio .dot {
+    -fx-padding: 2px;
 }
-.passengerData .main .hbBuyingDocTypeServicesAndCost .pServices .vbServices{
-
+.passengerData .main .hbBuyingDocTypeServicesAndCost .pBuyingAndDocType {
+    -fx-pref-width: 452px;
+    -fx-pref-height: 148px;
+    -fx-border-width: 0 1px 0 0;
+    -fx-border-color: #d7dce1;
 }
-/*опиши тут ті дві лейбли документ тайп та сервіс*/
-.passengerData .main .hbBuyingDocTypeServicesAndCost .pBuyingAndDocType .vbDocType .label,
-.passengerData .main .hbBuyingDocTypeServicesAndCost .pServices .vbServices .label {
-
+.passengerData .main .hbBuyingDocTypeServicesAndCost .pBuyingAndDocType .vbDocType {
+    -fx-spacing: 12px;
 }
-.passengerData .main .hbBuyingDocTypeServicesAndCost .bpTicketCost{
-
+.passengerData .main .hbBuyingDocTypeServicesAndCost .pServices {
+    -fx-pref-width: 269px;
+    -fx-border-width: 0 1px 0 0;
+    -fx-border-color: #d7dce1;
 }
-.passengerData .main .hbBuyingDocTypeServicesAndCost .bpTicketCost .label{
-
+.passengerData .main .hbBuyingDocTypeServicesAndCost .pServices .vbServices {
+    -fx-spacing: 12px;
+}
+/*.passengerData .main .hbBuyingDocTypeServicesAndCost .pServices .vbServices .check-box {*/
+    /*-fx-text-fill: #222;*/
+/*}*/
+.passengerData .main .hbBuyingDocTypeServicesAndCost .pServices .vbServices .check-box {
+    -fx-pref-height: 17px;
+}
+.passengerData .main .hbBuyingDocTypeServicesAndCost .pServices .vbServices .check-box .box {
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+    -fx-border-color: #c6cdd7;
+    -fx-border-width: 2px;
+    -fx-padding: 1px;
+}
+.passengerData .main .hbBuyingDocTypeServicesAndCost .pServices .vbServices .check-box:selected .box {
+    -fx-background-color: #68b1dd;
+    -fx-border-color: #68b1dd;
+}
+.passengerData .main .hbBuyingDocTypeServicesAndCost .pServices .vbServices .check-box:selected .mark {
+    -fx-background-color: white;
 }
 
+.passengerData .main .hbBuyingDocTypeServicesAndCost .bpTicketCost {
+    -fx-padding: 14px 2px 2px 15px;
+}
+
+.passengerData .main .hbBuyingDocTypeServicesAndCost .bpTicketCost .label {
+    -fx-pref-width: 200px;
+    -fx-text-fill: #222;
+    -fx-font-size: 19px;
+    -fx-alignment: center-right;
+}
 
 
 
@@ -418,32 +501,58 @@
 .enterPassengersDataPane {
 
 }
-.enterPassengersDataPane .lblEnterPassengerData{
+.lblEnterPassengerData {
+    -fx-text-fill: #444;
+    -fx-font-size: 21px;
+    -fx-font-weight: bold;
+}
+.lblBeSureAndBlaBla {
+    -fx-text-fill: #d56950;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 1px 0px 10px 0px;
+}
+.spVBPassengersData.scroll-pane {
+    -fx-hbar-policy: never;
+    -fx-vbar-policy: as-needed;
+
+    -fx-background-color: transparent, transparent;
+    -fx-background-insets: 0, 1;
+    -fx-padding: 1.0;
+}
+.spVBPassengersData.scroll-pane:focused {
+    -fx-background-color: transparent, transparent;
+    -fx-background-insets: 0, 1;
+    -fx-padding: 1.0;
+}
+
+.enterPassengersDataPane .spVBPassengersData .vbPassengersData {
 
 }
-.enterPassengersDataPane .lblBeSureAndBlaBla{
-
-}
-.enterPassengersDataPane .vbPassengersData{
-
-}
-.enterPassengersDataPane .hbTotalCostAndBuyButton {
-
+.enterPassengersDataPane .bpTotalCostAndBuyButton {
+    -fx-padding: 20px 0 0 0;
 }
 
-.enterPassengersDataPane .hbTotalCostAndBuyButton .vbTotalCostAndBuyButton {
+.enterPassengersDataPane .bpTotalCostAndBuyButton .vbTotalCostAndBuyButton {
+    -fx-spacing: 5;
+}
+.enterPassengersDataPane .bpTotalCostAndBuyButton .vbTotalCostAndBuyButton .bpTotalCost {
 
 }
-.enterPassengersDataPane .hbTotalCostAndBuyButton .vbTotalCostAndBuyButton .bpTotalCost{
+.enterPassengersDataPane .bpTotalCostAndBuyButton .vbTotalCostAndBuyButton .bpTotalCost .bpLblLabelTotalCost{
 
+ }
+.bpLblLabelTotalCost .lblLabelTotalCost{
+    -fx-text-fill: #aaa;
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
 }
-.enterPassengersDataPane .hbTotalCostAndBuyButton .vbTotalCostAndBuyButton .bpTotalCost .lblLabelTotalCost{
-
+.bpTotalCost .lblTotalCost{
+    -fx-text-fill: #222;
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
 }
-.enterPassengersDataPane .hbTotalCostAndBuyButton .vbTotalCostAndBuyButton .bpTotalCost .lblTotalCost{
-
-}
-.enterPassengersDataPane .hbTotalCostAndBuyButton .vbTotalCostAndBuyButton .btnBuy{
+.enterPassengersDataPane .bpTotalCostAndBuyButton .vbTotalCostAndBuyButton .btnBuy{
 
 }
 

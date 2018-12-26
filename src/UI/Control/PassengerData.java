@@ -3,6 +3,7 @@ package UI.Control;
 import Entity.Place;
 import UI.View.EnterPassengersDataPane;
 import javafx.beans.property.BooleanProperty;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -27,7 +28,8 @@ public class PassengerData extends VBox {
     private VBox vbMain;
         private HBox hbFLNamesAndCancel;
             private NameField nfLastName, nfFirstName;
-            private Label btnCancel;
+            private HBox hbBtnCancel;
+                private Label btnCancel;
         private HBox hbRouteCarriagePlaceInfo;
             Label lblRouteInfo, lblCarriageInfo, lblPlaceInfo;
         private HBox hbBuyingDocTypeServicesAndCost;
@@ -80,7 +82,9 @@ public class PassengerData extends VBox {
     private void createHBFLNamesAndCancel() {
         createNameFields();
         createCancelButton();
-        hbFLNamesAndCancel = new HBox(nfLastName, nfFirstName, btnCancel);
+
+        hbFLNamesAndCancel = new HBox(nfLastName, nfFirstName, hbBtnCancel);
+        hbFLNamesAndCancel.getStyleClass().add("hbFLNamesAndCancel");
     }
     private void createNameFields() {
         nfLastName = new NameField("Last name");
@@ -91,6 +95,10 @@ public class PassengerData extends VBox {
         btnCancel.getStyleClass().add("btnCancel");
         // допиши сюди спливаюче вікно з підтвердженням скасування
         btnCancel.setOnMouseClicked(event -> enterPassengersDataPane.cancelOrder(this));
+
+        hbBtnCancel = new HBox(btnCancel);
+        hbBtnCancel.getStyleClass().add("hbBtnCancel");
+
     }
 
     private void createHBRouteCarriagePlaceInfo() {
@@ -122,6 +130,7 @@ public class PassengerData extends VBox {
     private void createRBBuy() {
         rbBuy = new RadioButton("Buy");
         rbBuy.setSelected(true);
+        rbBuy.setToggleGroup(new ToggleGroup());
         rbBuy.setLayoutX(14);
         rbBuy.setLayoutY(15);
     }
@@ -131,7 +140,8 @@ public class PassengerData extends VBox {
 
         vbDocType = new VBox(lblDocType, rbFull, rbChild, rbStudents);
         vbDocType.getStyleClass().add("vbDocType");
-        vbDocType.setLayoutX(171);
+//        vbDocType.setLayoutX(171);
+        vbDocType.setLayoutX(158);
         vbDocType.setLayoutY(15);
     }
     private void createRBsDocType() {
@@ -162,6 +172,8 @@ public class PassengerData extends VBox {
 
         vbServices = new VBox(lblServices, chbBedLinen, chb2Beverage, chb1Beverage);
         vbServices.getStyleClass().add("vbServices");
+        vbServices.setLayoutX(16);
+        vbServices.setLayoutY(15);
     }
     private void createChBsServices() {
         chbBedLinen = createCheckBoxServices("Bed linen", bedLinenCost);

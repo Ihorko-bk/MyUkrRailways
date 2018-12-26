@@ -3,8 +3,8 @@ package UI.View;
 import UI.Control.PassengerData;
 import UI.Control.PlaceOrder;
 import UI.Control.SimpleButton;
-import javafx.beans.property.BooleanProperty;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -19,11 +19,13 @@ public class EnterPassengersDataPane extends VBox {
 
     private Label lblEnterPassengerData;
     private Label lblBeSureAndBlaBla;
-    private VBox vbPassengersData;
-    private HBox hbTotalCostAndBuyButton;
+    private ScrollPane spVBPassengersData;
+        private VBox vbPassengersData;
+    private BorderPane bpTotalCostAndBuyButton;
         private VBox vbTotalCostAndBuyButton;
             private BorderPane bpTotalCost;
-                private Label lblLabelTotalCost;
+                private BorderPane bpLblLabelTotalCost;
+                    private Label lblLabelTotalCost;
                 private Label lblTotalCost;
             private SimpleButton btnBuy;
 
@@ -31,11 +33,11 @@ public class EnterPassengersDataPane extends VBox {
         createLblEnterPassengerData();
         createLblBeSureAndBlaBla();
         passengerDataList = PassengerData.createPassengerDataListFromPlaceOrderList(placeOrders, this);
-        createVBPassengersData();
-        createHBTotalCostAndBuyButton();
+        createSPVBPassengersData();
+        createBPTotalCostAndBuyButton();
 
         getStyleClass().add("enterPassengerDataPane");
-        getChildren().addAll(lblEnterPassengerData, lblBeSureAndBlaBla, vbPassengersData, hbTotalCostAndBuyButton);
+        getChildren().addAll(lblEnterPassengerData, lblBeSureAndBlaBla, spVBPassengersData, bpTotalCostAndBuyButton);
     }
 
     private void createLblEnterPassengerData() {
@@ -50,19 +52,31 @@ public class EnterPassengersDataPane extends VBox {
         );
         lblBeSureAndBlaBla.getStyleClass().add("lblBeSureAndBlaBla");
     }
+    private void createSPVBPassengersData() {
+        createVBPassengersData();
 
+        spVBPassengersData = new ScrollPane(vbPassengersData);
+        if (passengerDataList.size() > 1) {
+            spVBPassengersData.setPrefSize(1014, 450);
+        } else {
+            spVBPassengersData.setFitToHeight(true);
+        }
+        spVBPassengersData.getStyleClass().add("spVBPassengersData");
+    }
     private void createVBPassengersData() {
         vbPassengersData = new VBox();
         vbPassengersData.getChildren().addAll(passengerDataList);
         vbPassengersData.getStyleClass().add("vbPassengersData");
+        vbPassengersData.setSpacing(20);
     }
 
 
-    private void createHBTotalCostAndBuyButton() {
+    private void createBPTotalCostAndBuyButton() {
         createVBTotalCostAndBuyButton();
 
-        hbTotalCostAndBuyButton = new HBox(vbTotalCostAndBuyButton);
-        hbTotalCostAndBuyButton.getStyleClass().add("hbTotalCostAndBuyButton");
+        bpTotalCostAndBuyButton = new BorderPane();
+        bpTotalCostAndBuyButton.setRight(vbTotalCostAndBuyButton);
+        bpTotalCostAndBuyButton.getStyleClass().add("bpTotalCostAndBuyButton");
     }
     private void createVBTotalCostAndBuyButton() {
         createBPTotalCost();
@@ -75,12 +89,16 @@ public class EnterPassengersDataPane extends VBox {
         lblLabelTotalCost = new Label("Total cost: ");
         lblLabelTotalCost.getStyleClass().add("lblLabelTotalCost");
 
+        bpLblLabelTotalCost = new BorderPane();
+        bpLblLabelTotalCost.getStyleClass().add("bpLblLabelTotalCost");
+        bpLblLabelTotalCost.setBottom(lblLabelTotalCost);
+
         lblTotalCost = new Label();
         recountTotalCost();
         lblTotalCost.getStyleClass().add("lblTotalCost");
 
         bpTotalCost = new BorderPane();
-        bpTotalCost.setLeft(lblLabelTotalCost);
+        bpTotalCost.setLeft(bpLblLabelTotalCost);
         bpTotalCost.setRight(lblTotalCost);
         bpTotalCost.getStyleClass().add("bpTotalCost");
     }

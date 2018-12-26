@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -114,7 +115,8 @@ public class PlaceOrdersPane extends VBox {
             }
 
             EnterPassengersDataPane enterPassengersDataPane = new EnterPassengersDataPane(placeOrders);
-            Scene scene = new Scene(enterPassengersDataPane);
+            Scene scene = new Scene(new Pane(enterPassengersDataPane));
+            scene.getStylesheets().add("css/uz.css");
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
